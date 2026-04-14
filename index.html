@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Card - HNG Stage 0</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #todo-card {
+            background-color: #171717;
+            border: 1px solid #333;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 460px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .todo-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        #todo-complete-toggle {
+            width: 24px;
+            height: 24px;
+            accent-color: #22c55e;
+            margin-top: 3px;
+            cursor: pointer;
+        }
+
+        .title-wrapper {
+            flex: 1;
+        }
+
+        #todo-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        #todo-priority {
+            padding: 8px 16px;
+            background-color: #ef4444;
+            color: white;
+            font-size: 0.82rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Body */
+        .todo-body {
+            padding: 24px;
+        }
+
+        #todo-description {
+            color: #a3a3a3;
+            line-height: 1.55;
+            margin-bottom: 22px;
+        }
+
+        .due-info {
+            margin-bottom: 20px;
+        }
+
+        .due-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        #todo-due-date {
+            color: #d1d5db;
+            font-weight: 500;
+        }
+
+        #todo-time-remaining {
+            font-weight: 500;
+            color: #ef4444;
+        }
+
+        /* Status */
+        .status-row {
+            margin-bottom: 20px;
+        }
+
+        #todo-status {
+            display: inline-block;
+            padding: 6px 14px;
+            background-color: #262626;
+            border: 1px solid #444;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+        }
+
+        /* Tags */
+        #todo-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            list-style: none;
+            padding: 0;
+        }
+
+        #todo-tags li span {
+            padding: 6px 16px;
+            background-color: #262626;
+            border: 1px solid #444;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+        }
+
+        /* Footer */
+        .todo-footer {
+            padding: 18px 24px;
+            background-color: #111;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 9999px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        #edit-button {
+            background-color: transparent;
+            color: #9ca3af;
+        }
+
+        #delete-button {
+            background-color: transparent;
+            color: #ef4444;
+        }
+
+        button:hover {
+            background-color: #262626;
+        }
+
+        /* Completed State */
+        .completed #todo-title {
+            text-decoration: line-through;
+            opacity: 0.75;
+        }
+
+        .completed #todo-status {
+            color: #22c55e;
+            background-color: #052e16;
+            border-color: #22c55e;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 480px) {
+            #todo-card {
+                border-radius: 16px;
+            }
+
+            .todo-header,
+            .todo-body,
+            .todo-footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <article id="todo-card" data-testid="test-todo-card">
+
+        <!-- Header -->
+        <header class="todo-header">
+            <input type="checkbox" id="complete-toggle" data-testid="test-todo-complete-toggle">
+
+            <label for="complete-toggle" class="title-wrapper" style="cursor: pointer;">
+                <h3 id="todo-title" data-testid="test-todo-title">
+                    Testable Item Card
+                </h3>
+            </label>
+
+            <span id="todo-priority" data-testid="test-todo-priority">
+                🔥 HIGH
+            </span>
+        </header>
+
+        <!-- Body -->
+        <div class="todo-body">
+            <p id="todo-description" data-testid="test-todo-description">
+                Build a todo list card component that is testable and accessible.
+            </p>
+
+            <div class="due-info">
+                <div class="due-row">
+                    <span>📅</span>
+                    <time id="todo-due-date" data-testid="test-todo-due-date" datetime="2026-03-15T00:00:00Z">
+                        Due March 15, 2026
+                    </time>
+                </div>
+                <div id="todo-time-remaining" data-testid="test-todo-time-remaining">
+                    Overdue by 45 days
+                </div>
+            </div>
+
+            <div class="status-row">
+                <span style="color:#888; font-size:0.85rem;">Status: </span>
+                <span id="todo-status" data-testid="test-todo-status">Pending</span>
+            </div>
+
+            <!-- Tags -->
+            <ul id="todo-tags" data-testid="test-todo-tags" role="list">
+                <li><span data-testid="test-todo-tag-work">💼 Work</span></li>
+                <li><span data-testid="test-todo-tag-urgent">🚨 Urgent</span></li>
+                <li><span>✨ Frontend</span></li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <footer class="todo-footer">
+            <button id="edit-button" data-testid="test-todo-edit-button">
+                ✏️ Edit
+            </button>
+            <button id="delete-button" data-testid="test-todo-delete-button">
+                🗑️ Delete
+            </button>
+        </footer>
+    </article>
+
+    <script>
+        const checkbox = document.getElementById('complete-toggle');
+        const card = document.getElementById('todo-card');
+        const statusEl = document.getElementById('todo-status');
+
+
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                card.classList.add('completed');
+                statusEl.textContent = 'Done';
+            } else {
+                card.classList.remove('completed');
+                statusEl.textContent = 'Pending';
+            }
+        });
+
+        function updateTimeRemaining() {
+            const timeEl = document.getElementById('todo-time-remaining');
+            timeEl.textContent = "Overdue by 45 days";
+        }
+
+        document.getElementById('edit-button').addEventListener('click', () => {
+            console.log("Edit clicked");
+        });
+
+        document.getElementById('delete-button').addEventListener('click', () => {
+            alert("Delete clicked");
+        });
+
+        updateTimeRemaining();
+    </script>
+</body>
+
+</html>
