@@ -229,7 +229,7 @@
                 <div class="due-row">
                     <span>📅</span>
                     <time id="todo-due-date" data-testid="test-todo-due-date" datetime="2026-03-15T00:00:00Z">
-                        Due March 15, 2026
+                        Due April 16, 2026
                     </time>
                 </div>
                 <div id="todo-time-remaining" data-testid="test-todo-time-remaining">
@@ -267,10 +267,8 @@
         const statusEl = document.getElementById('todo-status');
         const timeRemainingEl = document.getElementById('todo-time-remaining');
 
-        // Fixed due date (must match what you show in "Due March 15, 2026")
         const DUE_DATE = new Date("2026-03-15T18:00:00Z");
 
-        // Checkbox toggle
         checkbox.addEventListener('change', () => {
             if (checkbox.checked) {
                 card.classList.add('completed');
@@ -281,7 +279,7 @@
             }
         });
 
-        // Dynamic Time Remaining
+
         function updateTimeRemaining() {
             const now = new Date();
             let diffMs = DUE_DATE - now;
@@ -289,7 +287,6 @@
             let color = "#ef4444";
 
             if (diffMs < 0) {
-                // Overdue
                 const days = Math.floor(Math.abs(diffMs) / (1000 * 60 * 60 * 24));
                 if (days > 0) {
                     timeText = `Overdue by ${days} day${days > 1 ? 's' : ''}`;
@@ -316,7 +313,6 @@
             timeRemainingEl.style.color = color;
         }
 
-        // Button handlers
         document.getElementById('edit-button').addEventListener('click', () => {
             console.log("Edit clicked");
         });
@@ -325,7 +321,6 @@
             alert("Delete clicked");
         });
 
-        // Run immediately and update every minute
         updateTimeRemaining();
         setInterval(updateTimeRemaining, 60000);
     </script>
