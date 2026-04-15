@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.svg.png" />
     <title>Todo Card - HNG Stage 0</title>
     <style>
         * {
@@ -237,8 +238,7 @@
         const statusEl = document.getElementById('todo-status');
         const timeRemainingEl = document.getElementById('todo-time-remaining');
 
-        // IMPORTANT: Due date matches what is displayed
-        const DUE_DATE = new Date("2026-04-16T18:00:00Z");
+        const DUE_DATE = new Date("2026-03-15T18:00:00Z");
 
         checkbox.addEventListener('change', () => {
             if (checkbox.checked) {
