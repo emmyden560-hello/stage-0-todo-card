@@ -198,7 +198,7 @@
     <article id="todo-card" data-testid="test-todo-card">
         <header class="todo-header">
             <input type="checkbox" id="todo-complete-toggle" data-testid="test-todo-complete-toggle">
-            <label for="complete-toggle" class="title-wrapper" style="cursor: pointer;">
+            <label for="todo-complete-toggle" class="title-wrapper" style="cursor: pointer;">
                 <h3 id="todo-title" data-testid="test-todo-title">Todo Item Card</h3>
             </label>
             <span id="todo-priority" data-testid="test-todo-priority">🔥 HIGH</span>
@@ -238,10 +238,10 @@
     </article>
 
     <script>
-        const checkbox = document.querySelector('[data-testid="test-todo-complete-toggle"]');
-        const card = document.querySelector('[data-testid="test-todo-card"]');
-        const statusEl = document.querySelector('[data-testid="test-todo-status"]');
-        const timeRemainingEl = document.querySelector('[data-testid="test-todo-time-remaining"]');
+        const checkbox = document.getElementById('todo-complete-toggle');
+        const card = document.getElementById('todo-card');
+        const statusEl = document.getElementById('todo-status');
+        const timeRemainingEl = document.getElementById('todo-time-remaining');
 
         const DUE_DATE = new Date("2026-03-15T18:00:00Z");
 
