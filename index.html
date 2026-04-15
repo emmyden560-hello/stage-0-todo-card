@@ -243,8 +243,10 @@
         const statusEl = document.getElementById('todo-status');
         const timeRemainingEl = document.getElementById('todo-time-remaining');
 
-        const DUE_DATE = new Date("2026-03-15T18:00:00Z");
+        // Fixed: Date now matches the displayed due date
+        const DUE_DATE = new Date("2026-04-16T18:00:00Z");
 
+        // Toggle completion
         checkbox.addEventListener('change', () => {
             if (checkbox.checked) {
                 card.classList.add('completed');
@@ -255,6 +257,7 @@
             }
         });
 
+        // Dynamic time remaining
         function updateTimeRemaining() {
             const now = new Date();
             let diffMs = DUE_DATE - now;
@@ -282,9 +285,11 @@
             timeRemainingEl.style.color = color;
         }
 
-        document.querySelector('[data-testid="test-todo-edit-button"]').addEventListener('click', () => console.log("Edit clicked"));
-        document.querySelector('[data-testid="test-todo-delete-button"]').addEventListener('click', () => alert("Delete clicked"));
+        // Button actions
+        document.getElementById('edit-button').addEventListener('click', () => console.log("Edit clicked"));
+        document.getElementById('delete-button').addEventListener('click', () => alert("Delete clicked"));
 
+        // Initialize
         updateTimeRemaining();
         setInterval(updateTimeRemaining, 60000);
     </script>
